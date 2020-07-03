@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,32 +52,7 @@ namespace StringHandling
         {
 			// TODO: Add code to edit the phone number
 			string phoneNumber = txtPhoneNumber.Text;
-			string cleanPhoneNumber = string.Empty;
-
-			foreach (char c in phoneNumber)
-			{
-				if (c.Equals('0'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if (c.Equals('1'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('2'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('3'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('4'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('5'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('6'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('7'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('8'))
-					cleanPhoneNumber += Convert.ToString(c);
-				else if(c.Equals('9'))
-					cleanPhoneNumber += Convert.ToString(c);
-
-			}
+			string cleanPhoneNumber = Regex.Replace(phoneNumber, "[^0-9]", "");
 
 			string entered = Convert.ToString(cleanPhoneNumber);
 			entered = entered.Insert(0,"(");
